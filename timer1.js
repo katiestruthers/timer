@@ -1,11 +1,15 @@
-const sorted = process.argv.slice(2).sort((a, b) => a - b);
+const input = process.argv.slice(2);
 
-for (let i = 0; i < sorted.length; i++) {
-  if (isNaN(sorted[i]) || sorted[i] < 0) {
-    continue;
+const timer = function(array) {
+  for (let i = 0; i < array.length; i++) {
+    if (isNaN(array[i]) || array[i] < 0) {
+      continue;
+    }
+  
+    setTimeout(() => {
+      process.stdout.write('\x07');
+    }, array[i] * 1000);
   }
+};
 
-  setTimeout(() => {
-    process.stdout.write('\x07');
-  }, sorted[i] * 1000);
-}
+timer(input);
